@@ -3,13 +3,14 @@ const express = require('express');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const path = require('path');
-const app = express();
 const routes = require('./routes/routes');
+const app = express();
 
-// Middleware
+// Middleware to parse incoming requests
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// Session middleware
 app.use(
     session({
         secret: "My personal matter",
@@ -18,6 +19,7 @@ app.use(
     })
 );
 
+// Flash message middleware
 app.use((req, res, next) => {
     res.locals.message = req.session.message;
     delete req.session.message;
@@ -52,20 +54,22 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
-
 app.get('/gallery', (req, res) => {
     res.render('gallery');
 });
 
-app.get('/classes',(req , res)=>{
+app.get('/classes', (req, res) => {
     res.render('classes');
 });
+
 app.get('/joinUS', (req, res) => {
     res.render('joinUS');
 });
+
 app.get('/admin/add-trainer', (req, res) => {
     res.render('add-trainer');
 });
+
 app.get('/trainer', (req, res) => {
     res.render('trainer');
 });
@@ -98,6 +102,7 @@ app.get('/AboutUs', (req, res) => {
     res.render('AboutUs');
 });
 
+// Route to handle adding a trainer
 app.post('/admin/add-trainer', async (req, res) => {
     const { name, email, phone, specialty, bio } = req.body;
 
@@ -118,7 +123,6 @@ app.post('/admin/add-trainer', async (req, res) => {
         res.status(500).send('Error Saving Trainer.');
     }
 });
-
 
 // Start the server
 const PORT = process.env.PORT || 4000;

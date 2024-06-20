@@ -6,17 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-       <link rel="stylesheet" href="/style.css">
-       <style>
-          /* Admin panel styling */
-          body {
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        /* Admin panel styling */
+        body {
             display: flex;
             min-height: 100vh;
             margin: 0;
             --primary: #FF0000;
-        --secondry: #2D3142;
-        --color-3: #FFF8E4;
-        --color-4: #FCD581;
+            --secondry: #2D3142;
+            --color-3: #FFF8E4;
+            --color-4: #FCD581;
         }
 
         /* Sidebar styling */
@@ -30,6 +30,7 @@
             align-items: center;
             padding-top: 20px;
         }
+
         #pguser {
             text-align: center;
             margin-bottom: 20px;
@@ -57,7 +58,6 @@
 
         a:hover {
             background: var(--color-4);
-        
             color: var(--secondry);
         }
 
@@ -93,7 +93,7 @@
                 margin: 0;
             }
         }
-       </style>
+    </style>
 </head>
 <body>
     <!-- Sidebar -->
@@ -105,31 +105,27 @@
         </div>
         
         <!-- Menu items -->
-        <a href="#" onclick="loadContent('clases')" >
-            <i class="fas fa-home ico"></i>
-            <i class="txt">Classes</i>
+        <a href="#" onclick="loadContent('inbox')">
+            <i class="fas fa-inbox ico"></i>
+            <i class="txt">Inbox</i>
         </a>
-        <!-- <a href="#" onclick="loadContent('trainer')">
-            <i class="fas fa-user-graduate ico"></i>
-            <i class="txt">Our Trainers</i>
-        </a> -->
-        <!-- <a href="#" onclick="loadContent('test')">
-            <i class="fas fa-cogs ico"></i>
-            <i class="txt">Our Classes</i>
-        </a> -->
     </div>
     <!-- Main content area -->
     <main id="pgmain">
         <h1>Welcome to the Admin Panel</h1>
-        <div class="section-2">
+        <!-- Initial content -->
+        <div id="initialContent" class="section-2">
             <div class="container" style="margin: -3px 1px 95px;">
                 <div class="row">
                     <div class="col text-side">
                         <h3 class="section-title-2">We Are More Skilled In Various Health & Fitness</h3>
                         <br>
-                        <p style="color: rgb(11, 0, 0);">Inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequu ntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore</p>
+                        <p style="color: rgb(11, 0, 0);">
+                            Inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequu ntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore
+                        </p>
                         <span>Weekly Progress</span>
                         <br>
+                        <!-- Progress bars -->
                         <div class="row">
                             <div class="col">
                                 <div class="progress-bar">
@@ -137,59 +133,55 @@
                                         <div class="w3-container w3-round bar-inner" style="width: 75%;">75%</div>
                                     </div>
                                 </div>
-                            </div>
-                            <br>
-                            <div class="w-100"><div class="col">Growth</div></div>
-                            <br>
-                            <div class="col">
-                                <div class="progress-bar">
-                                    <div class="w3-light-grey bar-2">
-                                        <div class="w3-container w3-round bar-inner-2" style="width: 85%;">85%</div>
+                                <div class="w-100"><div class="col">Growth</div></div>
+                                <div class="col">
+                                    <div class="progress-bar">
+                                        <div class="w3-light-grey bar-2">
+                                            <div class="w3-container w3-round bar-inner-2" style="width: 85%;">85%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-100"><div class="col">New Accounts</div></div>
+                                <div class="col">
+                                    <div class="progress-bar">
+                                        <div class="w3-light-grey bar-3">
+                                            <div class="w3-container w3-round bar-inner-3" style="width: 82%;">80%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-100"><div class="col">Income Target</div></div>
+                                <div class="col">
+                                    <div class="progress-bar">
+                                        <div class="w3-light-grey bar-3">
+                                            <div class="w3-container w3-round bar-inner-3" style="width: 70%;">70%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-100"><div class="col">Expense Target</div></div>
+                                <div class="col">
+                                    <div class="progress-bar">
+                                        <div class="w3-light-grey bar-3">
+                                            <div class="w3-container w3-round bar-inner-3" style="width: 55%;">55%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-100"><div class="col">Spending Target</div></div>
+                                <div class="col">
+                                    <div class="progress-bar">
+                                        <div class="w3-light-grey bar-3">
+                                            <div class="w3-container w3-round bar-inner-3" style="width: 45%;">45%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-100"><div class="col">Total Target</div></div>
+                                <div class="col">
+                                    <div class="progress-bar">
+                                        <div class="w3-light-grey bar-3">
+                                            <div class="w3-container w3-round bar-inner-3" style="width: 80%;">80%</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="w-100"><div class="col">New  Accounts</div></div>
-                            <div class="col">
-                                <div class="progress-bar">
-                                    <div class="w3-light-grey bar-3">
-                                        <div class="w3-container w3-round bar-inner-3" style="width: 82%;">80%</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="w-100"><div class="col">Income  Target</div></div>
-                            <div class="col">
-                                <div class="progress-bar">
-                                    <div class="w3-light-grey bar-3">
-                                        <div class="w3-container w3-round bar-inner-3" style="width: 70%;">70%</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="w-100"><div class="col">Expence   Target</div></div>
-                            <div class="col">
-                                <div class="progress-bar">
-                                    <div class="w3-light-grey bar-3">
-                                        <div class="w3-container w3-round bar-inner-3" style="width: 55%;">55%</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="w-100"><div class="col">Spending  Target</div></div>
-                            <div class="col">
-                                <div class="progress-bar">
-                                    <div class="w3-light-grey bar-3">
-                                        <div class="w3-container w3-round bar-inner-3" style="width: 45%;">45%</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="w-100"><div class="col">Total  Target</div></div>
-                            <div class="col">
-                                <div class="progress-bar">
-                                    <div class="w3-light-grey bar-3">
-                                        <div class="w3-container w3-round bar-inner-3" style="width: 80%;">80%</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="w-100" style="padding-bottom: 50px;"></div>
-                            <!-- <div class="col"><button id="join"><a href="joinUS">Join Us</button></a></div> -->
                         </div>
                     </div>
                     <div class="col section-2-img">
@@ -212,12 +204,14 @@
         </div>
     </main>
 
-    <script >
+    <!-- JavaScript to fetch content dynamically -->
+    <script>
         function loadContent(page) {
             fetch(`/${page}`)
                 .then(response => response.text())
                 .then(html => {
-                    document.getElementById('pgmain').innerHTML = html;
+                    document.getElementById('initialContent').style.display = 'none'; // Hide initial content
+                    document.getElementById('pgmain').innerHTML = html; // Replace with fetched content
                 })
                 .catch(error => {
                     console.error('Error loading content:', error);
