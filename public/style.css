@@ -419,7 +419,7 @@ p {
 }
 .logos-slide {
   white-space: nowrap;
-  animation: 20s slide infinite linear;
+  animation: 40s slide infinite linear;
 }
 
 .logos:hover .logos-slide {
@@ -681,8 +681,10 @@ to {
   background-color: #0c2a4b;
 }
 .bmi-result {
+  margin-top: 25px;
   text-align: center;
-  margin-right: 20px;
+ 
+  margin-left: -1100px;
   color: #333;
 }
 

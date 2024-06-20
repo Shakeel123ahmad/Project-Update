@@ -98,16 +98,25 @@
 <body>
     <!-- Sidebar -->
     <div id="pgside">
-        <!-- Branding or User info -->
         <div id="pguser">
             <img src="images/glog.png" alt="User Image">
             <i class="txt">FlEXIFY ADMIN</i>
         </div>
-        
-        <!-- Menu items -->
-        <a href="#" onclick="loadContent('inbox')">
+        <a href="#" onclick="loadContent('inbox', this)">
             <i class="fas fa-inbox ico"></i>
             <i class="txt">Inbox</i>
+        </a>
+        <a href="#" onclick="loadContent('approved', this)">
+            <i class="fas fa-check ico"></i>
+            <i class="txt">Approved Requests</i>
+        </a>
+        <a href="#" onclick="loadContent('rejected', this)">
+            <i class="fas fa-times ico"></i>
+            <i class="txt">Rejected Requests</i>
+        </a>
+        <a href="#" onclick="loadContent('freetrialusers', this)">
+            <i class="fas fa-plus ico"></i>
+            <i class="txt">freetrialusers Requests</i>
         </a>
     </div>
     <!-- Main content area -->
@@ -205,18 +214,36 @@
     </main>
 
     <!-- JavaScript to fetch content dynamically -->
-    <script>
-        function loadContent(page) {
-            fetch(`/${page}`)
-                .then(response => response.text())
-                .then(html => {
-                    document.getElementById('initialContent').style.display = 'none'; // Hide initial content
-                    document.getElementById('pgmain').innerHTML = html; // Replace with fetched content
-                })
-                .catch(error => {
-                    console.error('Error loading content:', error);
-                });
-        }
-    </script>
+   <script>
+    function loadContent(page, link) {
+        fetch(`/${page}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                // Return either response.text() or response.json() depending on your server response
+                return response.text(); // Assuming your server returns HTML
+            })
+            .then(html => {
+                const initialContent = document.getElementById('initialContent');
+                if (initialContent) {
+                    initialContent.style.display = 'none'; // Hide initial content
+                }
+                document.getElementById('pgmain').innerHTML = html; // Replace with fetched content
+
+                // Remove 'current' class from all links
+                const links = document.querySelectorAll('#pgside a');
+                links.forEach(l => l.classList.remove('current'));
+
+                // Add 'current' class to the clicked link
+                link.classList.add('current');
+            })
+            .catch(error => {
+                console.error('Error loading content:', error);
+                document.getElementById('pgmain').innerHTML = `<p>An error has occurred while loading the content: ${error.message}</p>`;
+            });
+    }
+</script>
+
 </body>
 </html>

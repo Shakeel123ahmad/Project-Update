@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const SignupModel = require('../models/SignupModel'); // Adjust path as necessary
 const joinUsModel = require('../models/joinusModel'); // Adjust path as necessary
+const FreeTrialUser = require('../models/FreeTrialUser'); // Adjust path as necessary
+const validator = require('validator');
 
 // Admin panel route to display pending user registrations
 router.get('/admin', async (req, res) => {
@@ -40,6 +42,27 @@ router.post('/admin/reject-user/:id', async (req, res) => {
 });
 
 
+// Route to fetch approved user requests
+router.get('/approved', async (req, res) => {
+    try {
+        const approvedUsers = await joinUsModel.find({ status: 'approved' });
+        res.render('requests', { users: approvedUsers, title: 'Approved Requests' });
+    } catch (err) {
+        console.error('Error fetching approved users:', err);
+        res.status(500).send('Error fetching approved users.');
+    }
+});
+
+// Route to fetch rejected user requests
+router.get('/rejected', async (req, res) => {
+    try {
+        const rejectedUsers = await joinUsModel.find({ status: 'rejected' });
+        res.render('requests', { users: rejectedUsers, title: 'Rejected Requests' });
+    } catch (err) {
+        console.error('Error fetching rejected users:', err);
+        res.status(500).send('Error fetching rejected users.');
+    }
+});
 // Route to fetch pending user requests (inbox functionality)
 router.get('/inbox', async (req, res) => {
     try {
@@ -61,7 +84,6 @@ router.post('/Signup', async (req, res) => {
         };
         return res.redirect('/Signup');
     }
-
     try {
         const newData = new SignupModel({
             name,
@@ -69,7 +91,6 @@ router.post('/Signup', async (req, res) => {
             pass,
             repass
         });
-
         await newData.save();
         req.session.message = {
             type: 'success',
@@ -92,7 +113,6 @@ router.post('/Signup', async (req, res) => {
         res.redirect('/Signup');
     }
 });
-
 // Login route
 router.post('/Login', async (req, res) => {
     const { email, pass } = req.body;
@@ -125,13 +145,15 @@ router.post('/Login', async (req, res) => {
 // User joinUS route
 router.post('/joinUS', async (req, res) => {
     const { name, email, occupation, registerDayTime, interestedIn, gender, trainer, status } = req.body;
+    const nameRegex = /^[a-zA-Z]+$/; // Regex for name validation (letters only)
+    const occupationRegex = /^[a-zA-Z\s]*$/; // Regex for occupation validation (letters and spaces only)
 
     try {
         // Check the number of users with status 'approved' or 'pending'
         const userCount = await joinUsModel.countDocuments({ status: { $in: ['approved', 'pending'] } });
 
-        if (userCount >= 2) {
-            // If the user count is 2 or more, send a message indicating no seats are available
+        if (userCount >= 300) {
+            // If the user count is 300 or more, send a message indicating no seats are available
             req.session.message = {
                 type: 'danger',
                 content: 'Registration failed. No seats available.'
@@ -139,7 +161,25 @@ router.post('/joinUS', async (req, res) => {
             return res.redirect('/joinus');
         }
 
-        // Proceed with registration if seats are available
+        // Validate name
+        if (!nameRegex.test(name)) {
+            req.session.message = {
+                type: 'danger',
+                content: 'Name can only contain letters.'
+            };
+            return res.redirect('/joinus');
+        }
+
+        // Validate occupation
+        if (!occupationRegex.test(occupation)) {
+            req.session.message = {
+                type: 'danger',
+                content: 'Occupation can only contain letters.'
+            };
+            return res.redirect('/joinus');
+        }
+
+        // Proceed with registration if seats are available and input is valid
         const newUser = new joinUsModel({
             name,
             email,
@@ -150,7 +190,6 @@ router.post('/joinUS', async (req, res) => {
             trainer,
             status
         });
-
         await newUser.save();
         req.session.message = {
             type: 'success',
@@ -173,9 +212,72 @@ router.post('/joinUS', async (req, res) => {
         res.redirect('/joinus');
     }
 });
+// Route to handle free trial form submissions
+router.post('/free-trial', async (req, res) => {
+    const { firstName, lastName, email } = req.body;
+
+    const nameRegex = /^[a-zA-Z]+$/;
+
+    if (!nameRegex.test(firstName) || !nameRegex.test(lastName)) {
+        req.session.message = {
+            type: 'danger',
+            content: 'Names can only contain letters.'
+        };
+        return res.redirect('/');
+    }
+
+    if (!validator.isEmail(email)) {
+        req.session.message = {
+            type: 'danger',
+            content: 'Please enter a valid email address.'
+        };
+        return res.redirect('/');
+    }
+
+    try {
+        // Check if user already exists
+        const existingUser = await FreeTrialUser.findOne({ email });
+        if (existingUser) {
+            req.session.message = {
+                type: 'danger',
+                content: 'You have already signed up for a free trial.'
+            };
+            return res.redirect('/');
+        }
+
+        // If user does not exist, save new user
+        const newUser = new FreeTrialUser({
+            firstName,
+            lastName,
+            email
+        });
+        await newUser.save();
+        req.session.message = {
+            type: 'success',
+            content: 'Thank you for signing up for a free trial!'
+        };
+        res.redirect('/');
+    } catch (err) {
+        console.error('Error saving free trial user:', err);
+        req.session.message = {
+            type: 'danger',
+            content: 'There was an error with your submission. Please try again.'
+        };
+        res.redirect('/');
+    }
+});
 
 
-
+// Route to fetch free trial users
+router.get('/freeTrialUsers', async (req, res) => {
+    try {
+        const freeTrialUsers = await FreeTrialUser.find({});
+        res.render('freeTrialUsers', { users: freeTrialUsers });
+    } catch (err) {
+        console.error('Error fetching free trial users:', err);
+        res.status(500).send('Error fetching free trial users.');
+    }
+});
 
 // Route to render Signup page
 router.get('/Signup', (req, res) => {
@@ -191,5 +293,4 @@ router.get('/Login', (req, res) => {
 router.get('/joinUS', (req, res) => {
     res.render('joinUS');
 });
-
 module.exports = router;

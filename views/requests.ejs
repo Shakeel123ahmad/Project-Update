@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %></title>
+    <!-- Include Bootstrap CSS and other required libraries -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="mt-4"><%= title %></h2>
+        <table class="table table-bordered mt-4">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Occupation</th>
+                    <th>Register Day/Time</th>
+                    <th>Interested In</th>
+                    <th>Gender</th>
+                    <th>Trainer</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (users.length > 0) { %>
+                    <% users.forEach(function(user) { %>
+                        <tr>
+                            <td><%= user.name %></td>
+                            <td><%= user.email %></td>
+                            <td><%= user.occupation %></td>
+                            <td><%= user.registerDayTime %></td>
+                            <td><%= user.interestedIn %></td>
+                            <td><%= user.gender %></td>
+                            <td><%= user.trainer %></td>
+                        </tr>
+                    <% }) %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="7">No requests found.</td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

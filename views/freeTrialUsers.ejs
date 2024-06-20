@@ -1,0 +1,15 @@
+<!-- views/freeTrialUsers.ejs -->
+<h2>Free Trial Users</h2>
+<% if (users.length > 0) { %>
+    <ul>
+        <% users.forEach(user => { %>
+            <li>
+                <strong>First Name:</strong> <%= user.firstName %><br>
+                <strong>Last Name:</strong> <%= user.lastName %><br>
+                <strong>Email:</strong> <%= user.email %><br>
+            </li>
+        <% }); %>
+    </ul>
+<% } else { %>
+    <p>No users have signed up for a free trial yet.</p>
+<% } %>
