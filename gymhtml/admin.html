@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Admin Panel</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/style.css">
+       <style>
+
+          /* Admin panel styling */
+          body {
+            display: flex;
+            min-height: 100vh;
+            margin: 0;
+            --primary: #FF0000;
+        --secondry: #2D3142;
+        --color-3: #FFF8E4;
+        --color-4: #FCD581;
+
+        }
+
+        /* Sidebar styling */
+        #pgside {
+            width: 200px;
+            background: #343a40;
+            color: white;
+            transition: width 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+        }
+
+        #pguser {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #pguser img {
+            width: 50px;
+            border-radius: 50%;
+        }
+
+        #pguser .txt {
+            display: block;
+            margin-top: 10px;
+            font-size: 1.2em;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+            padding: 30px 0;
+            width: 100%;
+            text-align: center;
+            transition: 0.5s;
+        }
+
+        a:hover {
+            background: var(--color-4);
+        
+            color: var(--secondry);
+        }
+
+        a.current {
+            background: var(--color-4);
+        }
+
+        i.ico {
+            display: block;
+            font-size: 1.5em;
+            margin-bottom: 5px;
+        }
+
+        /* Main content area */
+        #pgmain {
+            flex-grow: 1;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+
+        /* Responsive styling */
+        @media screen and (max-width: 768px) {
+            #pgside {
+                width: 70px;
+            }
+
+            #pgside i.txt {
+                display: none;
+            }
+
+            #pgside i.ico {
+                font-size: 1.5em;
+                margin: 0;
+            }
+        }
+       </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div id="pgside">
+        <!-- Branding or User info -->
+        <div id="pguser">
+            <img src="images/glog.png" alt="User Image">
+            <i class="txt">FlEXIFY ADMIN</i>
+        </div>
+        
+        <!-- Menu items -->
+        <a href="#" class="current">
+            <i class="fas fa-home ico"></i>
+            <i class="txt">Dashboard</i>
+        </a>
+        <a href="#">
+            <i class="fas fa-user-graduate ico"></i>
+            <i class="txt">Our Trainers</i>
+        </a>
+        <a href="#">
+            <i class="fas fa-cogs ico"></i>
+            <i class="txt">Our Classes</i>
+        </a>
+    </div>
+
+    <!-- Main content area -->
+    <main id="pgmain">
+        <h1>Welcome to the Admin Panel</h1>
+        <p>This is your main content area.</p>
+    </main>
+</body>
+</html>

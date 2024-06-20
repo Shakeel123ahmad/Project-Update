@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Gym website </title>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<link rel="stylesheet" href="/public/style.css">
+</head>
+<body>
+    <nav class="navbar sticky-top navbar-light custom-navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="images/glog.png" alt="" width="40" height="40" class="d-inline-block align-text-top"> 𝗙𝗹𝗲𝘅𝗶𝗳𝘆
+            </a>
+            <div class="navbar navbar-expand-sm bg-null justify-content-start">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/classes.html">Classes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/trainer.html">Trainers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/AboutUs.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/joinUS.html">Join Us</a></li>
+                    <li class="nav-item"><button id="btn1"><a href="login.html">Sign In</a></button></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<!-- Register form -->
+<div class="bio">
+     <div class="container">
+      <form id="registrationForm" action="/Singup" method="post">
+          <div class="form-group">
+              <label for="Name"><strong>Name</strong></label>
+              <input type="text" class="form-control" id="Name" placeholder="Name*" required>
+          </div>
+          <div class="form-group">
+              <label for="Email"><strong>Email</strong></label>
+              <input type="email" class="form-control" id="Email" placeholder="Email*" required>
+          </div>
+          <div class="form-group">
+              <label for="occupation"><strong>Occupation</strong></label>
+              <input type="text" class="form-control" id="occupation" placeholder="Occupation*" required>
+          </div>
+          <div class="form-group">
+              <label for="registerdaytime"><strong>Register (date and time)</strong></label>
+              <input type="datetime-local" id="registerdaytime" name="registerdaytime" required>
+          </div>
+          <div class="form-group">
+              <label for="interestedIn"><strong>Interested In</strong></label>
+              <select id="interestedIn" class="form-control" required>
+                  <option value="Yoga">Yoga</option>
+                  <option value="Cycling">Cycling</option>
+                  <option value="Cardio">Cardio</option>
+              </select>
+          </div>
+          <div class="form-group">
+              <label for="gender"><strong>Gender</strong></label>
+              <select id="gender" class="form-control" required>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Others">Others</option>
+              </select>
+          </div>
+          <div class="form-group">
+              <label for="trainer"><strong>Choose Trainer</strong></label>
+              <select id="trainer" class="form-control" required>
+                  <option value="Trainer 1">John</option>
+                  <option value="Trainer 2">Alexa</option>
+                  <option value="Trainer 3">Ali</option>
+                  <option value="Trainer 4">Alais</option>
+              </select>
+          </div>
+          <div id="vacancyMessage" class="vacancy-message"></div>
+          <button type="submit" class="btn btn-success">Register</button>
+      </form>
+  </div>
+</div>
+  <script src="script.js"></script>
+   <!-- Footer -->
+   <footer class="text-white text-center text-lg-start" style="background-color: #23242a; padding: 20px 100px 20px; margin-top: 20px;">
+    <!-- Grid container -->
+    <div class="container p-4">
+        <!--Grid row-->
+        <div class="row mt-4">
+            <!--Grid column-->
+            <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
+                <h5 class="text-uppercase mb-4 pb-1">FlEXIFY &nbsp;<img src="/images/glog.png" alt="" style="width: 100px; height: 100px;">&nbsp; GYM</h5>
+
+                <p style="color: white;">Welcome to Flexify Health & Fitness club. Here at Flexify Fitness Club, we are offering a wide range of fitness services like Functional Training’s.</p>
+                
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                <h5 class="text-uppercase mb-4" style="margin-left: 20px;">CONTACT</h5>
+                <ul class="fa-ul" style="margin-left:60px; margin-right:30px;text-align: left; ">
+                  <li class="mb-3">
+                      <span class="fa-li"><i class="fas fa-home"></i></span>
+                      <span class="ms-2">Shah Jewena, Jhang Punjab. PK</span>
+                  </li>
+                  <li class="mb-3">
+                      <span class="fa-li"><i class="fas fa-envelope"></i></span>
+                      <span class="ms-2">
+                          <a href="mailto:shakeelsialvi6@gmail.com" style="text-decoration: none; color: inherit;">shakeelsialvi6@gmail.com</a>
+                      </span>
+                  </li>
+                  <li class="mb-3">
+                      <span class="fa-li"><i class="fas fa-phone"></i></span>
+                      <span class="ms-2">
+                          <a href="tel:+923086498744" style="text-decoration: none; color: inherit;">+92 308 649 8744</a>
+                      </span>
+                  </li>
+                  <li class="mb-3">
+                      <span class="fa-li"><i class="fas fa-print"></i></span>
+                      <span class="ms-2">
+                        <a href="tel:+923059766552" style="text-decoration: none; color: inherit;">+92 305 976 6552</a>
+                    </span>
+                  </li>
+              </ul>
+              
+                <div class="mt-4" style="margin-top: 4.0rem !important;">
+                  <!-- Facebook -->
+                  <a type="button" class="btn btn-floating btn-secondary btn-lg" href="#"><i class="fab fa-facebook-square"></i></a>
+                  <!-- linkedin -->
+                  <a type="button" class="btn btn-floating btn-secondary btn-lg" href="#"><i class="fab fa-linkedin"></i></a>
+                  <!-- Twitter -->
+                  <a type="button" class="btn btn-floating btn-secondary btn-lg" href="#"><i class="fab fa-twitter"></i></a>
+                  <!-- Google + -->
+                  <a type="button" class="btn btn-floating btn-secondary btn-lg" href="#"><i class="fab fa-google-plus-g"></i></a>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                <h5 class="text-uppercase mb-4">Morning shift-time</h5>
+                <table class="table text-center text-white">
+                    <tbody class="font-weight-normal">
+                    <tr>
+                        <td>Mon - Thu</td>
+                        <td>5am - 10am</td>
+                    </tr>
+                    <tr>
+                        <td>Fri - Sun</td>
+                        <td>6am - 09am</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <h5 class="text-uppercase mb-4">Evening shift-time</h5>
+                <table class="table text-center text-white">
+                    <tbody class="font-weight-normal">
+                    <tr>
+                        <td>Mon - Thu</td>
+                        <td>5pm - 10pm</td>
+                    </tr>
+                    <tr>
+                        <td>Fri - Sun</td>
+                        <td>6pm - 09pm</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--Grid column-->
+        </div>
+        <!--Grid row-->
+    </div>
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2024 All Rights Reserved: <a class="text-white" href="/index.html"><strong>Flexify.com</strong></a>
+    </div>
+</footer>
+
+
+</body>
+</html>

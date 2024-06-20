@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Admin Panel</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+       <link rel="stylesheet" href="/style.css">
+       <style>
+          /* Admin panel styling */
+          body {
+            display: flex;
+            min-height: 100vh;
+            margin: 0;
+            --primary: #FF0000;
+        --secondry: #2D3142;
+        --color-3: #FFF8E4;
+        --color-4: #FCD581;
+        }
+
+        /* Sidebar styling */
+        #pgside {
+            width: 200px;
+            background: #343a40;
+            color: white;
+            transition: width 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+        }
+        #pguser {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #pguser img {
+            width: 50px;
+            border-radius: 50%;
+        }
+
+        #pguser .txt {
+            display: block;
+            margin-top: 10px;
+            font-size: 1.2em;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+            padding: 30px 0;
+            width: 100%;
+            text-align: center;
+            transition: 0.5s;
+        }
+
+        a:hover {
+            background: var(--color-4);
+        
+            color: var(--secondry);
+        }
+
+        a.current {
+            background: var(--color-4);
+        }
+
+        i.ico {
+            display: block;
+            font-size: 1.5em;
+            margin-bottom: 5px;
+        }
+
+        /* Main content area */
+        #pgmain {
+            flex-grow: 1;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+
+        /* Responsive styling */
+        @media screen and (max-width: 768px) {
+            #pgside {
+                width: 70px;
+            }
+
+            #pgside i.txt {
+                display: none;
+            }
+
+            #pgside i.ico {
+                font-size: 1.5em;
+                margin: 0;
+            }
+        }
+       </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div id="pgside">
+        <!-- Branding or User info -->
+        <div id="pguser">
+            <img src="images/glog.png" alt="User Image">
+            <i class="txt">FlEXIFY ADMIN</i>
+        </div>
+        
+        <!-- Menu items -->
+        <a href="#" onclick="loadContent('clases')" >
+            <i class="fas fa-home ico"></i>
+            <i class="txt">Classes</i>
+        </a>
+        <!-- <a href="#" onclick="loadContent('trainer')">
+            <i class="fas fa-user-graduate ico"></i>
+            <i class="txt">Our Trainers</i>
+        </a> -->
+        <!-- <a href="#" onclick="loadContent('test')">
+            <i class="fas fa-cogs ico"></i>
+            <i class="txt">Our Classes</i>
+        </a> -->
+    </div>
+    <!-- Main content area -->
+    <main id="pgmain">
+        <h1>Welcome to the Admin Panel</h1>
+        <div class="section-2">
+            <div class="container" style="margin: -3px 1px 95px;">
+                <div class="row">
+                    <div class="col text-side">
+                        <h3 class="section-title-2">We Are More Skilled In Various Health & Fitness</h3>
+                        <br>
+                        <p style="color: rgb(11, 0, 0);">Inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequu ntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore</p>
+                        <span>Weekly Progress</span>
+                        <br>
+                        <div class="row">
+                            <div class="col">
+                                <div class="progress-bar">
+                                    <div class="w3-light-grey bar">
+                                        <div class="w3-container w3-round bar-inner" style="width: 75%;">75%</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="w-100"><div class="col">Growth</div></div>
+                            <br>
+                            <div class="col">
+                                <div class="progress-bar">
+                                    <div class="w3-light-grey bar-2">
+                                        <div class="w3-container w3-round bar-inner-2" style="width: 85%;">85%</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-100"><div class="col">New  Accounts</div></div>
+                            <div class="col">
+                                <div class="progress-bar">
+                                    <div class="w3-light-grey bar-3">
+                                        <div class="w3-container w3-round bar-inner-3" style="width: 82%;">80%</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-100"><div class="col">Income  Target</div></div>
+                            <div class="col">
+                                <div class="progress-bar">
+                                    <div class="w3-light-grey bar-3">
+                                        <div class="w3-container w3-round bar-inner-3" style="width: 70%;">70%</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-100"><div class="col">Expence   Target</div></div>
+                            <div class="col">
+                                <div class="progress-bar">
+                                    <div class="w3-light-grey bar-3">
+                                        <div class="w3-container w3-round bar-inner-3" style="width: 55%;">55%</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-100"><div class="col">Spending  Target</div></div>
+                            <div class="col">
+                                <div class="progress-bar">
+                                    <div class="w3-light-grey bar-3">
+                                        <div class="w3-container w3-round bar-inner-3" style="width: 45%;">45%</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-100"><div class="col">Total  Target</div></div>
+                            <div class="col">
+                                <div class="progress-bar">
+                                    <div class="w3-light-grey bar-3">
+                                        <div class="w3-container w3-round bar-inner-3" style="width: 80%;">80%</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-100" style="padding-bottom: 50px;"></div>
+                            <!-- <div class="col"><button id="join"><a href="joinUS">Join Us</button></a></div> -->
+                        </div>
+                    </div>
+                    <div class="col section-2-img">
+                        <div class="image-container">
+                            <img src="images/thumb-15.jpg" alt="Importance of Gym">
+                            <div class="animation">
+                                <div class="line one"></div>
+                                <div class="line two"></div>
+                                <div class="line three"></div>
+                            </div>
+                            <div class="animation-back">
+                                <div class="line one"></div>
+                                <div class="line two "></div>
+                                <div class="line three"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script >
+        function loadContent(page) {
+            fetch(`/${page}`)
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('pgmain').innerHTML = html;
+                })
+                .catch(error => {
+                    console.error('Error loading content:', error);
+                });
+        }
+    </script>
+</body>
+</html>

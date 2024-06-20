@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Admin Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar sticky-top navbar-light custom-navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="images/glog.png" alt="" width="40" height="40" class="d-inline-block align-text-top"> 𝗙𝗹𝗲𝘅𝗶𝗳𝘆
+            </a>
+            <div class="navbar navbar-expand-sm bg-null justify-content-start">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/classes.html">Classes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/trainer.html">Trainers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/AboutUs.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/joinUS.html">Join Us</a></li>
+                    <li class="nav-item"><button id="btn1"><a href="login.html">Sign In</a></button></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container">
+        <h2>Admin Login</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary"><a href="admin.html">Login</a></button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Placeholder for authentication logic
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            if (username === 'admin' && password === 'password') { // Simplified for demonstration
+                window.location.href = 'admin/index.html';
+            } else {
+                alert('Invalid credentials');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Include Owl Carousel CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+</head>
+<body>
+
+    <!-- Your carousel HTML -->
+    <div class="owl-carousel">
+        <div> Your Content 1 </div>
+        <div> Your Content 2 </div>
+        <div> Your Content 3 </div>
+    </div>
+
+    <!-- Include Owl Carousel JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <!-- Your custom JS -->
+    <script>
+    $(document).ready(function(){
+        $(".owl-carousel").owlCarousel({
+            items: 3,
+            // autoplay: false,
+            margin: 30,
+            loop: true,
+            dots: true,
+            // nav: true,
+            // navText: ["<i class='fas fa-long-arrow-alt-left'></i>","<i class='fas fa-long-arrow-alt-right'></i>"]
+        });
+    });
+    </script>
+</body>
+</html>
