@@ -8,7 +8,7 @@ const signupSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
-        unique: true // Enforce unique emails
+        unique: true 
     },
     pass: {
         type: String,

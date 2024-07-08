@@ -4,15 +4,17 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const path = require('path');
 const routes = require('./routes/routes');
-const app = express();
+const { checkAdminAuth } = require('./models/authMiddleware'); // Adjust the path as necessary
 const cors = require('cors');
+const app = express();
+
 app.use(cors());
 
-// Middleware to parse incoming requests
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Session middleware
+
 app.use(
     session({
         secret: "My personal matter",
@@ -21,20 +23,19 @@ app.use(
     })
 );
 
-// Flash message middleware
+
 app.use((req, res, next) => {
     res.locals.message = req.session.message;
     delete req.session.message;
     next();
 });
 
-// Set the view engine to EJS
+
 app.set('view engine', 'ejs');
 
-// Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Connect to MongoDB
+
 mongoose.connect("mongodb://localhost:27017/GYM_CRUD");
 
 mongoose.connection.on('connected', () => {
@@ -45,12 +46,15 @@ mongoose.connection.on('error', (err) => {
     console.error(`MongoDB connection Error: ${err}`);
 });
 
-// Use routes
+
 app.use("/", routes);
 
-app.get('/admin', (req, res) => {
-    res.render('admin');
-});
+
+// app.use('/admin', checkAdminAuth, express.static(path.join(__dirname, 'public')));
+
+// app.get('/admin', (req, res) => {
+//     res.render('admin');
+// });
 
 app.get('/', (req, res) => {
     res.render('index');
